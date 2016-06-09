@@ -5,8 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookingRoomApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="700" Width="850">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+        <ListView Name="RoomBook" Margin="5" Grid.Column="0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="NrRoom" DisplayMemberBinding="{Binding NrRoom}"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Surname" DisplayMemberBinding="{Binding Surname}"/>
+                    <GridViewColumn Header="Room" DisplayMemberBinding="{Binding RoomStatus}"/>
+                    <GridViewColumn Header="Entry Room" />
+                    <GridViewColumn Header="Quiet Room" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        
+        <StackPanel Grid.Column="1" Margin="5">
+            <Label Content="Personal Data" FontSize="20" HorizontalAlignment="Center"/>
+            <StackPanel>
+                <Label Content="Name"/>
+                <TextBox Name="NameTextBox" MinWidth="300" HorizontalAlignment="Left" />
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Surname"/>
+                <TextBox Name="SurnameTextBox" MinWidth="300" HorizontalAlignment="Left" />
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Room"/>
+                <ComboBox Name="RoomTextBox" MinWidth="200" HorizontalAlignment="Left"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="20">
+                <StackPanel Margin="20,0">
+                    <Label Content="Entry Room"/>
+                    <Calendar Name="EntryRoomTextBox" Margin="0,20"/>
+                </StackPanel>
+                <StackPanel Margin="20,0">
+                    <Label Content="Quiet Room"/>
+                    <Calendar Name="QuietRoomTextBox" Margin="0,20"/>
+                </StackPanel>
+                
+            </StackPanel>
+           
+
+        </StackPanel>
         
     </Grid>
 </Window>
