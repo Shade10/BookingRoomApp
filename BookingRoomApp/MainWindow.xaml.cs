@@ -34,7 +34,8 @@ namespace BookingRoomApp
             this.RoomList = new ObservableCollection<Room>();
             ShowRoomList();
 
-            this.RoomComboBox.Text = RoomList.Count.ToString();
+            this.RoomComboBox.ItemsSource = RoomComboBoxShowList();
+            
 
 
         }
