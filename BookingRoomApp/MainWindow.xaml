@@ -50,7 +50,7 @@
             </StackPanel>
             <StackPanel>
                 <Label Content="Room"/>
-                <ComboBox Name="RoomTextBox" MinWidth="200" HorizontalAlignment="Left"/>
+                <ComboBox Name="RoomComboBox" MinWidth="200" HorizontalAlignment="Left" ItemsSource="{Binding RoomList}" DisplayMemberPath="RoomList"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,20">
                 <StackPanel Margin="20,0">

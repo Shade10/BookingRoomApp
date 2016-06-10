@@ -32,11 +32,11 @@ namespace BookingRoomApp
             this.DataContext = this;
             this.GuestsList = new ObservableCollection<Guest>();
             this.RoomList = new ObservableCollection<Room>();
-            
             ShowRoomList();
-            
 
-            
+            this.RoomComboBox.Text = RoomList.Count.ToString();
+
+
         }
 
         private void ShowRoomList()
@@ -56,8 +56,17 @@ namespace BookingRoomApp
                 Room room = new Room(i, Status.Free, HowManyBedInRooms.Triple);
                 RoomList.Add(room);
             }
+        }
 
-            
+        private string RoomComboBoxShowList()
+        {
+
+            foreach (Room room in RoomList)
+            {
+                return room.ToString();
+            }
+            return RoomComboBox.SelectionBoxItemStringFormat;
+
         }
     }
 }
