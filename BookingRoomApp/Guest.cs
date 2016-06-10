@@ -9,8 +9,6 @@ namespace BookingRoomApp
 {
     public class Guest: Room
     {
-        
-        
         public string UserName { get; set; } = "";
         public string UserSurname { get; set; } = "";
         public DateTime EntryTimeRoom { get; set; } 

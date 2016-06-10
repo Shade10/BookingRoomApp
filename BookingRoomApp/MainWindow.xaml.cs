@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +22,42 @@ namespace BookingRoomApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        public ObservableCollection<Room> RoomList { get; set; }
+        public ObservableCollection<Guest> GuestsList { get; set; }
+        
         public MainWindow()
         {
+            
             InitializeComponent();
+            this.DataContext = this;
+            this.GuestsList = new ObservableCollection<Guest>();
+            this.RoomList = new ObservableCollection<Room>();
+            
+            ShowRoomList();
+            
+
+            
+        }
+
+        private void ShowRoomList()
+        {
+            for (int i = 1; i <= 5; i++)
+            {
+                Room room = new Room(i, Status.Free, HowManyBedInRooms.Single);
+                RoomList.Add(room);
+            }
+            for (int i = 6; i <= 9; i++)
+            {
+                Room room = new Room(i, Status.Free, HowManyBedInRooms.Double);
+                RoomList.Add(room);
+            }
+            for (int i = 10; i <= 14; i++)
+            {
+                Room room = new Room(i, Status.Free, HowManyBedInRooms.Triple);
+                RoomList.Add(room);
+            }
+
+            
         }
     }
 }
