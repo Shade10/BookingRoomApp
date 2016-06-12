@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookingRoomApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="900">
+        Title="MainWindow" Height="600" Width="900">
     <Grid Margin="0,0,2,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"  />
+            <ColumnDefinition Width="2*"  />
             <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -48,9 +48,11 @@
                 <Label Content="Surname"/>
                 <TextBox Name="SurnameTextBox" MinWidth="300" HorizontalAlignment="Left" />
             </StackPanel>
-            <StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
                 <Label Content="Room"/>
-                <ComboBox Name="RoomComboBox" MinWidth="200" HorizontalAlignment="Left" ItemsSource="{Binding RoomList}" DisplayMemberPath="RoomList"/>
+                <ComboBox Name="RoomComboBox" MinWidth="200" HorizontalAlignment="Left"/>
+                <Label Content="Nr Room"/>
+                <ComboBox Name="NrRoomComboBox" MinWidth="200" HorizontalAlignment="Left" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,20">
                 <StackPanel Margin="20,0">
@@ -61,9 +63,10 @@
                     <Label Content="Quiet Room"/>
                     <Calendar Name="QuietRoomCalendar" Margin="0,20"/>
                 </StackPanel>
-
             </StackPanel>
-
+            
+            <Button Name="AddGuestToRoom" Content="Add Guest" Width="100" HorizontalAlignment="Left" Margin="30,0,0,0" Click="AddGuestToRoom_OnClick" />
+            <Button Name="DeleteGuestFromRoom" Content="Delete Guest" Width="100" HorizontalAlignment="Left" Margin="30,0,0,0" Click="DeleteGuestFromRoom_OnClick" />
 
         </StackPanel>
 

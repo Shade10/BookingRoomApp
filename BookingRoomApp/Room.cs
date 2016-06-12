@@ -16,21 +16,12 @@ namespace BookingRoomApp
         public Status StatusRoom { get; set; } = Status.Free;
         public HowManyBedInRooms HowManyBedInRoom { get; set; } = HowManyBedInRooms.Single;
 
-        public Room()
+        public override string ToString()
         {
-            for (int i = 1; i <= 5; i++)
-            {
-                Room room = new Room(i, Status.Free, HowManyBedInRooms.Single);
-            }
-            for (int i = 6; i <= 9; i++)
-            {
-                Room room = new Room(i, Status.Free, HowManyBedInRooms.Double);
-            }
-            for (int i = 10; i <= 14; i++)
-            {
-                Room room = new Room(i, Status.Free, HowManyBedInRooms.Triple);
-            }
+            return String.Format("Nr.{0} Type: {1}", NrRoom, HowManyBedInRoom);
         }
+
+        public Room(){}
 
         public Room(int nrRoom, Status statusRoom, HowManyBedInRooms howManyBedInRoom)
         {
