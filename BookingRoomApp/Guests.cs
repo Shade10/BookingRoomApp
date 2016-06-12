@@ -8,30 +8,32 @@ using System.Threading.Tasks;
 
 namespace BookingRoomApp
 {
-    public class Guests: Room
+    public class Guests : Room
     {
-        private ObservableCollection<Room> nrRooms;
-        
+        //private ObservableCollection<Room> nrRooms;
 
-        public string UserName { get; set; } = "";
-        public string UserSurname { get; set; } = "";
-        public DateTime EntryTimeRoom { get; set; } 
+
+        public string GuestName { get; set; } 
+        public string GuestSurname { get; set; }
+        public DateTime EntryTimeRoom { get; set; }
         public DateTime QuieTimeRoom { get; set; }
 
 
         public Guests() { }
-        public Guests(ObservableCollection<Room> nrRoom, string userName, string userSurname, DateTime entryTimeRoom, DateTime quieTimeRoom)
+        public Guests(int nrRoom, string guestName, string guestSurname, HowManyBedInRooms typeRooms)  //, DateTime entryTimeRoom, DateTime quieTimeRoom
         {
-            
-                this.nrRooms = nrRoom;
-                this.UserName = userName;
-                this.UserSurname = userSurname;
-                this.EntryTimeRoom = entryTimeRoom;
-                this.QuieTimeRoom = quieTimeRoom;
-                
-            
+
+            this.NrRoom = nrRoom;
+            this.GuestName = guestName;
+            this.GuestSurname = guestSurname;
+            this.HowManyBedInRoom = typeRooms;
+
+            //this.EntryTimeRoom = entryTimeRoom;
+            //this.QuieTimeRoom = quieTimeRoom;
+
+
         }
 
-        
+
     }
 }

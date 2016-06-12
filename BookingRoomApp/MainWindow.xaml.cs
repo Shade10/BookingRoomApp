@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -26,11 +27,10 @@ namespace BookingRoomApp
         public ObservableCollection<Room> RoomList { get; set; }
         public ObservableCollection<Guests> GuestsList { get; set; }
         public Room Roome = new Room();
-        public Guests Guest;
-        
+
         public MainWindow()
         {
-            
+
             InitializeComponent();
             this.DataContext = this;
             this.GuestsList = new ObservableCollection<Guests>();
@@ -39,7 +39,7 @@ namespace BookingRoomApp
             ShowRoomList();
 
             this.RoomComboBox.ItemsSource = Enum.GetValues(typeof(HowManyBedInRooms));
-            this.NrRoomComboBox.ItemsSource = new ObservableCollection<Room>();
+
             //this.NrRoomComboBox.Items.Add(NrRoomList);
         }
 
@@ -62,20 +62,29 @@ namespace BookingRoomApp
             }
         }
 
-        //private void ShowNrList()
-        //{
-        //    foreach (Room room in RoomList)
-        //    {
-        //    }
 
-        //}
 
         private void AddGuestToRoom_OnClick(object sender, RoutedEventArgs e)
         {
-            if (Roome.StatusRoom ==  Status.Free)
+
+            if (Roome.StatusRoom == Status.Free)
             {
-                //Guest = new Guests(, NameTextBox.Text, SurnameTextBox.Text, EntryRoomCalendar.DisplayDateStart.Value, QuietRoomCalendar.DisplayDateEnd.Value );
-                this.Roome.StatusRoom = Status.Busy;
+                var selectedItems = RoomListView.SelectedItems;
+
+                int nrRoom = RoomListView.SelectedIndex + 1;
+                string name = this.NameTextBox.Text;
+                string surName = this.SurnameTextBox.Text;
+                HowManyBedInRooms typeRoom = Roome.HowManyBedInRoom; // bad solution but i dont kno what I should give here
+               
+
+                Guests Guest = new Guests(nrRoom, name, surName, typeRoom);
+                GuestsList.Add(Guest);
+
+
+
+
+
+
             }
 
         }
@@ -83,5 +92,20 @@ namespace BookingRoomApp
         private void DeleteGuestFromRoom_OnClick(object sender, RoutedEventArgs e)
         {
         }
+
+
+        //private void SelectedGuestRoom()
+        //{
+        //    int nrRoom = RoomListView.SelectedIndex = Roome.NrRoom;
+        //    string name = NameTextBox.Text;
+        //    string surName = SurnameTextBox.Text;
+
+        //    HowManyBedInRooms TypeRoom = Roome.HowManyBedInRoom;
+        //    Guest = new Guests(nrRoom, name, surName );
+
+        //    GuestsList.Add(Guest);
+
+        //}
+
     }
 }

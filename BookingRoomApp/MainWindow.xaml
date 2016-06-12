@@ -19,9 +19,9 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="NrRoom" DisplayMemberBinding="{Binding NrRoom}"/>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Surname" DisplayMemberBinding="{Binding Surname}"/>
-                    <GridViewColumn Header="Room" DisplayMemberBinding="{Binding RoomStatus}"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding GuestName}"/>
+                    <GridViewColumn Header="Surname" DisplayMemberBinding="{Binding GuestSurname}"/>
+                    <GridViewColumn Header="Room" DisplayMemberBinding="{Binding StatusRoom}"/>
                     <GridViewColumn Header="Entry Room" DisplayMemberBinding="{Binding EntryTimeRoom}"/>
                     <GridViewColumn Header="Quiet Room" DisplayMemberBinding="{Binding QuieTimeRoom}" />
                 </GridView>

@@ -16,10 +16,7 @@ namespace BookingRoomApp
         public Status StatusRoom { get; set; } = Status.Free;
         public HowManyBedInRooms HowManyBedInRoom { get; set; } = HowManyBedInRooms.Single;
 
-        public override string ToString()
-        {
-            return String.Format("Nr.{0} Type: {1}", NrRoom, HowManyBedInRoom);
-        }
+        
 
         public Room(){}
 
