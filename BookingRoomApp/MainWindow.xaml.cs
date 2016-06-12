@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
@@ -24,10 +25,11 @@ namespace BookingRoomApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Room Roome;
+        public Guests Guest;
         public ObservableCollection<Room> RoomList { get; set; }
         public ObservableCollection<Guests> GuestsList { get; set; }
-        public Room Roome = new Room();
-
+        
         public MainWindow()
         {
 
@@ -38,9 +40,7 @@ namespace BookingRoomApp
             //ICollectionView NrRoomList = CollectionViewSource.GetDefaultView(RoomList);
             ShowRoomList();
 
-            this.RoomComboBox.ItemsSource = Enum.GetValues(typeof(HowManyBedInRooms));
 
-            //this.NrRoomComboBox.Items.Add(NrRoomList);
         }
 
         private void ShowRoomList()
@@ -66,46 +66,61 @@ namespace BookingRoomApp
 
         private void AddGuestToRoom_OnClick(object sender, RoutedEventArgs e)
         {
-
-            if (Roome.StatusRoom == Status.Free)
+            try
             {
-                var selectedItems = RoomListView.SelectedItems;
-
                 int nrRoom = RoomListView.SelectedIndex + 1;
                 string name = this.NameTextBox.Text;
                 string surName = this.SurnameTextBox.Text;
-                HowManyBedInRooms typeRoom = Roome.HowManyBedInRoom; // bad solution but i dont kno what I should give here
-               
+                HowManyBedInRooms typeRoom = Roome.TypeRoom ; // bad solution but i dont kno what I should give here
 
-                Guests Guest = new Guests(nrRoom, name, surName, typeRoom);
-                GuestsList.Add(Guest);
-
-
-
-
-
-
+                DateTime entryGuest = EntryRoomCalendar.SelectedDate.Value;
+                DateTime QuietGuest = QuietRoomCalendar.SelectedDate.Value;
+                if (Roome.StatusRoom == Status.Free) 
+                {
+                    Guests Guest = new Guests(nrRoom, name, surName, typeRoom, entryGuest, QuietGuest);
+                    GuestsList.Add(Guest);
+                    RoomListView.SelectedItem = (Roome.StatusRoom == Status.Busy);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("First you must choose room, Date your stay end out and write Name and surname Guest", "Added Guest");
             }
 
+
+
         }
+
+
+
 
         private void DeleteGuestFromRoom_OnClick(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                this.GuestsList.RemoveAt(this.GuestRoomBookView.SelectedIndex);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("First you have to select Guest you want to delete.", "Delete Guest From Room List");
+            }
         }
 
 
+
+        #region don't uses method at this moment
         //private void SelectedGuestRoom()
         //{
         //    int nrRoom = RoomListView.SelectedIndex = Roome.NrRoom;
         //    string name = NameTextBox.Text;
         //    string surName = SurnameTextBox.Text;
 
-        //    HowManyBedInRooms TypeRoom = Roome.HowManyBedInRoom;
+        //    HowManyBedInRooms TypeRoom = Roome.TypeRoom;
         //    Guest = new Guests(nrRoom, name, surName );
 
         //    GuestsList.Add(Guest);
 
         //}
-
+        #endregion
     }
 }

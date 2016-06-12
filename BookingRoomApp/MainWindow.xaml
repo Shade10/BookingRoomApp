@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookingRoomApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="900">
+        Title="MainWindow" Height="600" Width="950">
     <Grid Margin="0,0,2,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"  />
+            <ColumnDefinition Width="3*"  />
             <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -21,19 +21,19 @@
                     <GridViewColumn Header="NrRoom" DisplayMemberBinding="{Binding NrRoom}"/>
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding GuestName}"/>
                     <GridViewColumn Header="Surname" DisplayMemberBinding="{Binding GuestSurname}"/>
-                    <GridViewColumn Header="Room" DisplayMemberBinding="{Binding StatusRoom}"/>
+                    <GridViewColumn Header="Room" DisplayMemberBinding="{Binding TypeRoom}"/>
                     <GridViewColumn Header="Entry Room" DisplayMemberBinding="{Binding EntryTimeRoom}"/>
                     <GridViewColumn Header="Quiet Room" DisplayMemberBinding="{Binding QuieTimeRoom}" />
                 </GridView>
             </ListView.View>
         </ListView>
 
-        <ListView Name="RoomListView" Margin="5" Grid.Column="0" Grid.Row="1" ItemsSource="{Binding RoomList}">
+        <ListView Name="RoomListView" Margin="10,10,0,0" Grid.Column="0" Grid.Row="1" ItemsSource="{Binding RoomList}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="NrRoom" DisplayMemberBinding="{Binding NrRoom}"/>
                     <GridViewColumn Header="Status Room" DisplayMemberBinding="{Binding StatusRoom}"/>
-                    <GridViewColumn Header="How Many Bed In Room" DisplayMemberBinding="{Binding HowManyBedInRoom}"/>
+                    <GridViewColumn Header="How Many Bed In Room" DisplayMemberBinding="{Binding TypeRoom}"/>
                 </GridView>
             </ListView.View>
         </ListView>
@@ -48,12 +48,7 @@
                 <Label Content="Surname"/>
                 <TextBox Name="SurnameTextBox" MinWidth="300" HorizontalAlignment="Left" />
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-                <Label Content="Room"/>
-                <ComboBox Name="RoomComboBox" MinWidth="200" HorizontalAlignment="Left"/>
-                <Label Content="Nr Room"/>
-                <ComboBox Name="NrRoomComboBox" MinWidth="200" HorizontalAlignment="Left" />
-            </StackPanel>
+            
             <StackPanel Orientation="Horizontal" Margin="0,20">
                 <StackPanel Margin="20,0">
                     <Label Content="Entry Room"/>
