@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BookingRoomApp
+﻿namespace BookingRoomApp
 {
     public enum Status { Free, Busy }
     public enum HowManyBedInRooms { Single, Double, Triple }
